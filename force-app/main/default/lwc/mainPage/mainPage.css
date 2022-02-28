@@ -1,0 +1,46 @@
+.page {
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "content"
+        "footer";
+    grid-template-rows: 80px 1fr 80px;
+    grid-template-columns: 1fr;
+    min-width: 600px;
+    background-color: var(--main-background);
+    padding: 10px;
+}
+
+.page-navigation {
+    grid-area: header;
+}
+
+.page-content {
+    grid-area: content;
+}
+
+[ data-color-mode='light'] {
+    --navigation-bar-button: #CCAFA5;
+    --navigation-bar-text: #444444;
+    --main-background: #EDE7DC;
+    --main-color-text: #444444;
+    --search-backgrount: #EDE7DC;
+    --product-card-background: #DCD2CC;
+    --button-color-background: #BDC3CB;
+        
+}
+
+[ data-color-mode='dark'] {
+    --navigation-bar-button: #4D648D;
+    --navigation-bar-text: #D0E1F9;
+    --main-background: #1E1F26;
+    --main-color-text: #D0E1F9;
+    --search-backgrount: #283655;   
+    --product-card-background: #283655;
+    --button-color-background: #4D648D;
+}
+
+:host {
+    --lwc-colorTextLabel: var(--main-color-text);
+
+}

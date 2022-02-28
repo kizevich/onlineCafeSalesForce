@@ -1,0 +1,27 @@
+<template>
+    <div class="page" data-color-mode={mode}>
+        <div class="page-navigation">
+            <c-navigation-bar onnavigate={onNavigate}></c-navigation-bar>
+        </div>
+        <lightning-input type="toggle" label="Dark mode" onchange={onChangeTheme}></lightning-input>
+
+        <div class="page-content">
+            <c-menu-page 
+                class="menu"
+                is-active={menuPage}
+                products={products}
+                filtered-products={products}
+                onselectproduct={addToCart}>
+            </c-menu-page>
+            <c-registration-page
+                is-active={loginPage}
+                oncontactlogin={contactLogin}>
+            </c-registration-page>
+            <c-shopping-cart
+                is-active={cartPage}
+                product-sets={productSets}
+                total-price={totalPrice}>
+            </c-shopping-cart>
+        </div>
+    </div>
+</template>

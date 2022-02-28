@@ -1,0 +1,24 @@
+<template>
+    <template if:true={isActive}>
+        <div class="list">
+            <div class="list-search">
+                <lightning-input label="Search" onchange={onSearch}></lightning-input>
+            </div>
+            <div class="list-card">
+                <template for:each={filteredProducts} for:item="product">
+                    <c-product-card
+                        key={product.Id}
+                        product={product}
+                        onclickcard={onClickCard}>
+                    </c-product-card>
+                </template>
+            </div>
+            <div class="list-item">
+                <c-detail-product-card
+                    product={selectedProduct}
+                    onselectproduct={addToCart}>
+                </c-detail-product-card>
+            </div>
+        </div>
+    </template>
+</template>

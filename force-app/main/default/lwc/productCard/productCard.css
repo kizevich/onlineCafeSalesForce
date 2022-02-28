@@ -1,0 +1,42 @@
+.product-card {
+    display: grid;
+    grid-template-areas: 
+        "image price"
+        "image description";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 70%;
+    grid-gap: 10px;
+}
+
+.product-card-image {
+    grid-area: image;
+    min-width: 100px;
+}
+
+.product-card-price {
+    grid-area: price;
+}
+
+.product-card-description {
+    grid-area: description;
+}
+
+a:active, a:link, a:visited, a {
+    color: var(--main-color-text);
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:hover {
+    color: var(--main-color-text);
+    text-decoration: none;
+    background-color: transparent;
+    --sds-c-card-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+:host {
+    --slds-c-card-radius-border: 10px;
+    --sds-c-card-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    --slds-c-card-color-background: var(--product-card-background);
+    --slds-c-card-color-border: transparent;
+}

@@ -1,0 +1,33 @@
+.list {
+    display: grid;
+    grid-template-areas: 
+        "search item"
+        "list item";
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.list-search {
+    grid-area: search;
+}
+
+.list-card {
+    grid-area: list;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    min-width: 250px;
+}
+
+.list-item {
+    grid-area: item;
+}
+
+:host {
+    --slds-c-input-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    --slds-c-input-color-background: var(--search-backgrount);
+    --lwc-colorTextLabel: var(--main-color-text);
+    --slds-c-input-color-border: transparent;
+    --sds-c-input-text-color: var(--main-color-text);
+}

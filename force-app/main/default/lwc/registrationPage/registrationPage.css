@@ -1,0 +1,19 @@
+.page {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media all and (max-width: 500px) {
+    .page {
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+}
+
+.page-form {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    min-width: 300px;
+}
+

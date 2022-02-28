@@ -1,0 +1,35 @@
+<template>
+    <template if:true={isActive}>
+        <div class="cart">
+            <template for:each={productSets} for:item="productSet">
+                <div class="cart-item" key={productSet.Product__c.Id}>
+                    <div class="cart-item-image"
+                        key={productSet.Product__c.Id}>
+                        <img src={productSet.Product__c.Photo_URL__c}  style="width:100px;height:100px;">
+                    </div>
+                    <div class="cart-item-product" 
+                        key={productSet.Product__c.Id}>
+                        {productSet.Product__c.Name}
+                    </div>
+                    <div class="cart-item-price" 
+                        key={productSet.Product__c.Id}>
+                        Price: ${productSet.Product__c.Price__c}
+                    </div>
+                    <div class="cart-item-count" 
+                        key={productSet.Product__c.Id}>
+                        Count: {productSet.Count__c}
+                    </div>
+                </div>
+            </template>
+            <div class="cart-footer">
+                <div class="cart-footer-price">
+                    Total pice:   ${totalPrice}
+                </div>
+                <template if:true={success}>Done</template>
+                <div class="cart-footer-button">
+                    <lightning-button label="Save Order" onclick={saveOrder}></lightning-button>
+                </div>
+            </div>
+        </div>
+    </template>
+</template>

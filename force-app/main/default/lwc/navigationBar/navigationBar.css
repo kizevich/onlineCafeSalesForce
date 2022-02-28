@@ -1,0 +1,23 @@
+.bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-gap: 1px;
+}
+
+a:active, a:link, a:visited, a {
+    color: var(--navigation-bar-text);
+    text-decoration: none;
+    background-color: var(--navigation-bar-button);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+a:hover {
+    color: var(--navigation-bar-text);
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: var(--navigation-bar-button);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

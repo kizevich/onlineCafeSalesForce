@@ -1,0 +1,13 @@
+<template>
+    <a onclick={cardClick}>
+        <lightning-card title={product.Name}>
+            <div class="product-card">
+                <div class="product-card-image">
+                    <img src={product.Photo_URL__c} style="width:100px;height:100px;">
+                </div>
+                <div class="product-card-price">Price: ${product.Price__c}</div>
+                <div class="product-card-description">{product.Description__c}</div>
+            </div>
+        </lightning-card>
+    </a>
+</template>
