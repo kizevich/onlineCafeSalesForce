@@ -1,6 +1,15 @@
 <template>
     <div class="bar">
-        <a id="menu" onclick={onClickMenu}>
+        <div class="bar-menu">
+            <lightning-button label="menu" onclick={onNavigate}></lightning-button>
+        </div>
+        <div class="bar-login">
+            <lightning-button label="login" onclick={onNavigate}></lightning-button>
+        </div>
+        <div class="bar-cart">
+            <lightning-button label="cart" onclick={onNavigate}></lightning-button>
+        </div>
+        <a id="menu" name='menu' onclick={onClickMenu}>
             <div class="bar-menu">Menu</div>
         </a>
         <a id="login" onclick={onClickLogin}>

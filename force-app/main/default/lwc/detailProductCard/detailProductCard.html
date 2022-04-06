@@ -2,14 +2,14 @@
     <template if:true={product}>
         <lightning-card title={product.Name}>
             <div class="product-card">
-                <div class="product-card-image">
+                <div class="product-card_image">
                     <img src={product.Photo_URL__c}  style="width:300px;height:300px;">
                 </div>
-                <div class="product-card-button">
+                <div class="product-card_button">
                     <lightning-button label="Add to Cart" onclick={addToCart}></lightning-button>
                 </div>
-                <div class="product-card-price">Price: ${product.Price__c}</div>
-                <div class="product-card-description">{product.Description__c}</div>
+                <div class="product-card_price">Price: ${product.Price__c}</div>
+                <div class="product-card_description">{product.Description__c}</div>
             </div>
         </lightning-card>
     </template>

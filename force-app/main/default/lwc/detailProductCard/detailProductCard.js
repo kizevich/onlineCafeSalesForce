@@ -9,6 +9,5 @@ export default class DetailProductCard extends LightningElement {
             detail: this.product.Id
         });
         this.dispatchEvent(event);
-        console.log('detail' + this.product.Id);
     }
 }

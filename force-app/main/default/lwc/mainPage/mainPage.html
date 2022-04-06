@@ -8,17 +8,16 @@
         <div class="page-content">
             <c-menu-page 
                 class="menu"
-                is-active={menuPage}
+                is-active={components.menu}
                 products={products}
                 filtered-products={products}
                 onselectproduct={addToCart}>
             </c-menu-page>
             <c-registration-page
-                is-active={loginPage}
                 oncontactlogin={contactLogin}>
             </c-registration-page>
             <c-shopping-cart
-                is-active={cartPage}
+                is-active={components.cart}
                 product-sets={productSets}
                 total-price={totalPrice}>
             </c-shopping-cart>

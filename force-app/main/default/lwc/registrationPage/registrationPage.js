@@ -5,9 +5,19 @@ import PASSWORD from '@salesforce/schema/Contact.Password__c';
 export default class RegistrationPage extends LightningElement {
     fields = [NAME_FIELD, PASSWORD];
 
-    @api isActive;
+    isActive;
     @api recordId;
     @api objectApiName;
+
+    constructor() {
+        super();
+        this.template.addEventListener('navigate', event => { this.navigate(event) });
+    }
+
+    navigate(event) {
+        if (event.detail === 'login') this.isActive = true;
+        console.log(event.detail);
+    }
 
     handleSuccess(event) {
         const evt = new ShowToastEvent({

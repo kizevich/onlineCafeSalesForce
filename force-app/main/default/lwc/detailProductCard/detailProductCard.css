@@ -10,23 +10,23 @@
     color: var(--main-color-text);
 }
 
-.product-card-image {
+.product-card_image {
     grid-area: image;
     min-width: 300px;
 }
 
-.product-card-button {
+.product-card_button {
     grid-area: button;
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
 }
 
-.product-card-price {
+.product-card_price {
     grid-area: price;
 }
 
-.product-card-description {
+.product-card_description {
     grid-area: description;
 }
 

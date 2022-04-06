@@ -2,6 +2,7 @@ public class ContactService {
     
     @AuraEnabled()
     public static Contact createContact(Contact cont){
+        if(cont == null) return null;
         try {
             insert cont;
         } catch (Exception e) {
@@ -13,6 +14,7 @@ public class ContactService {
 
     @AuraEnabled(cacheable = true)
     public static Contact getContact(String login){
+        if(String.isBlank(login)) return null;
         Contact contact = new Contact();
         try {
             contact = ContactManager.getContact(login);
@@ -23,14 +25,4 @@ public class ContactService {
         return contact;
     }
 
-    // public static Contact getContact(Id contactId) {
-    //     Contact contact = new Contact();
-    //     try {
-    //         contact = ContactManager.getContact(contactId);
-    //     } catch (Exception e) {
-    //         throw new AuraHandledException(e.getMessage());
-    //     }
-
-    //     return contact;
-    // }
 }

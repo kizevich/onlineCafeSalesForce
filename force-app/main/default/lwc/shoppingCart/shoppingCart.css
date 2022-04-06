@@ -19,20 +19,20 @@
     font-size: medium;
 }
 
-.cart-item-image {
+.cart-item_image {
     grid-area: image;
     min-width: 100px;
 }
 
-.cart-item-product {
+.cart-item_product {
     grid-area: name;
 }
 
-.cart-item-price {
+.cart-item_price {
     grid-area: price;
 }
 
-.cart-item-count {
+.cart-item_count {
     grid-area: count;
 }
 
@@ -41,7 +41,7 @@
     justify-content: flex-end;
 }
 
-.cart-footer-price {
+.cart-footer_price {
     font-size: larger;
     padding: 10px;
 }

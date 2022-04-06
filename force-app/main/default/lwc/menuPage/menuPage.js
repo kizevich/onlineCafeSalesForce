@@ -14,12 +14,12 @@ export default class MenuPage extends LightningElement {
 
         this.searchingProducts = [];
 
-        if(this.searchValue && this.products) {
+        if (this.searchValue && this.products) {
             this.products.forEach(product => {
-                if(product.Name.toLowerCase().includes(this.searchValue)) this.searchingProducts.push(product);
+                if (product.Name.toLowerCase().includes(this.searchValue)) this.searchingProducts.push(product);
             });
 
-            if(this.searchingProducts) this.filteredProducts = this.searchingProducts;
+            if (this.searchingProducts) this.filteredProducts = this.searchingProducts;
             
         } else {
             this.filteredProducts = this.products;
@@ -35,6 +35,5 @@ export default class MenuPage extends LightningElement {
             detail: event.detail
         });
         this.dispatchEvent(cartEvent);
-        console.log('menuPage' + event.detail);
     }
 }

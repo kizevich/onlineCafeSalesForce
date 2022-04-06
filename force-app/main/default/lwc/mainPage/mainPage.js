@@ -13,6 +13,11 @@ export default class MainPage extends LightningElement {
     @track totalPrice;
     @track clientId = '0035j00000KEMZTAA5';
     @track mode = 'light';
+    components = {
+        menu: true,
+        login: false,
+        cart: false
+    }
 
     @wire(getProducts)
     allProducts({data,error}){
@@ -26,21 +31,22 @@ export default class MainPage extends LightningElement {
     }
 
     onNavigate(event) {
-        if(event.detail === 'menu') {
-            this.menuPage = true;
-            this.loginPage = false;
-            this.cartPage = false;
-        }
-        if(event.detail === 'login') {
-            this.menuPage = false;
-            this.loginPage = true;
-            this.cartPage = false;
-        }
-        if(event.detail === 'cart') {
-            this.menuPage = false;
-            this.loginPage = false;
-            this.cartPage = true;
-        }
+        this.changeVisibleComponent(event.detail);
+        const navigateEvent = new CustomEvent('navigate', {
+            detail: event.target.label
+        });
+        this.dispatchEvent(navigateEvent);
+    }
+
+    changeVisibleComponent(componentName) {
+        Object.keys(this.components).forEach(key => {
+            if (key === componentName) {
+                this.components[key] = true;
+            } else {
+                this.components[key] = false;
+            }
+        });
+        console.log(this.components.cart);
     }
 
     contactLogin(event) {
@@ -48,24 +54,21 @@ export default class MainPage extends LightningElement {
     }
     
     addToCart(event) {
-        console.log('mainPage' + event.detail);
-        if(!this.clientId) alert('please Log in');
-        if(!this.cart) this.cart = createCart({clientId : this.clientId}); 
-        console.log(this.clientId);
-        console.log(this.cart);
+        if (!this.clientId) alert('please Log in');
+        if (!this.cart) this.cart = createCart({clientId : this.clientId}); 
 
-        let product = this.products.find(product => product.Id === event.detail);
-        let productSet = {Product__c: product, Count__c: 1, Cart__c: this.cart};
-        let isProductSetInCart = false;
+        const product = this.products.find(product => product.Id === event.detail);
+        const productSet = {Product__c: product, Count__c: 1, Cart__c: this.cart};
+        const isProductSetInCart = false;
 
-        if(this.productSets){
+        if (this.productSets) {
             this.productSets.forEach(element => {
-                if(element.Product__c.Id === event.detail) {
+                if (element.Product__c.Id === event.detail) {
                     element.Count__c += 1;
                     isProductSetInCart = true;
                 }
             });
-            if(!isProductSetInCart) {
+            if (!isProductSetInCart) {
                 this.productSets.push(productSet);
             }
             this.totalPrice = 0;

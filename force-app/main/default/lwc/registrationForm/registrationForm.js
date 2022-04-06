@@ -52,7 +52,6 @@ export default class RegistrationForm extends LightningElement {
 
     onRegistration() {
         if(this.titleValue === this.REGISTRATION){
-            console.log('register');
             createContact({ cont : this.contactRecord })
                 .then(result => {
                     this.message = result;
@@ -96,13 +95,9 @@ export default class RegistrationForm extends LightningElement {
                     this.success = false;
                     console.log("error", JSON.stringify(this.error));
                 });
-            console.log(contact);
             if(contact.Password__c !== this.contactRecord.Password__c) alert('Wrong login or password');
 
         } 
-        // const event = new CustomEvent('contactlogin', {
-        //     detail: this.contact.Id
-        // });
-        // this.dispatchEvent(event);      
+        
     }
 }
