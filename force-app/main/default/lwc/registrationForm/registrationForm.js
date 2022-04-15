@@ -11,7 +11,7 @@ export default class RegistrationForm extends LightningElement {
     @track titleValue = 'Registration';
     @track titleButtonValue = 'Log In';
     @track logButtonValue = 'Register';
-    @track edviceText = 'Already have an Account?';
+    @track adviceText = 'Already have an Account?';
     @track isRegistration = true;
     @track loginError;
     @track success;
@@ -39,14 +39,14 @@ export default class RegistrationForm extends LightningElement {
             this.titleValue = this.LOG_IN;
             this.titleButtonValue = this.REGISTRATION;
             this.logButtonValue = this.LOG_IN;
-            this.edviceText = 'Dont have an Account yet?';
+            this.adviceText = 'Dont have an Account yet?';
             this.isRegistration = false;
         } else if(this.titleValue === this.LOG_IN) {
             this.isRegistration = true;
             this.titleValue = this.REGISTRATION;
             this.titleButtonValue = this.LOG_IN;
             this.logButtonValue = this.REGISTER;
-            this.edviceText = 'Already have an Account?';
+            this.adviceText = 'Already have an Account?';
         }
     }
 

@@ -13,7 +13,7 @@ export default class MainPage extends LightningElement {
     @track totalPrice;
     @track clientId = '0035j00000KEMZTAA5';
     @track mode = 'light';
-    components = {
+    @track components = {
         menu: true,
         login: false,
         cart: false
@@ -46,10 +46,9 @@ export default class MainPage extends LightningElement {
                 this.components[key] = false;
             }
         });
-        console.log(this.components.cart);
     }
 
-    contactLogin(event) {
+    onContactLogin(event) {
         this.clientId = event.detail;
     }
     
@@ -59,7 +58,7 @@ export default class MainPage extends LightningElement {
 
         const product = this.products.find(product => product.Id === event.detail);
         const productSet = {Product__c: product, Count__c: 1, Cart__c: this.cart};
-        const isProductSetInCart = false;
+        let isProductSetInCart = false;
 
         if (this.productSets) {
             this.productSets.forEach(element => {
@@ -77,6 +76,10 @@ export default class MainPage extends LightningElement {
                 this.totalPrice.toFixed(2);   
             });
         } 
+    }
+
+    onSavedCart(event) {
+        alert('cart was saved');
     }
 
     onChangeTheme(event) {

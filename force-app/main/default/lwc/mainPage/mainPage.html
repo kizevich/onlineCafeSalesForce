@@ -14,12 +14,14 @@
                 onselectproduct={addToCart}>
             </c-menu-page>
             <c-registration-page
-                oncontactlogin={contactLogin}>
+                is-active={components.login}
+                oncontactlogin={onContactLogin}>
             </c-registration-page>
             <c-shopping-cart
                 is-active={components.cart}
                 product-sets={productSets}
-                total-price={totalPrice}>
+                total-price={totalPrice}
+                oncartsaved={onSavedCart}>
             </c-shopping-cart>
         </div>
     </div>

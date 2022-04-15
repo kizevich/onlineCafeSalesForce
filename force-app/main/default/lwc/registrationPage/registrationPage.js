@@ -5,7 +5,7 @@ import PASSWORD from '@salesforce/schema/Contact.Password__c';
 export default class RegistrationPage extends LightningElement {
     fields = [NAME_FIELD, PASSWORD];
 
-    isActive;
+    @api isActive;
     @api recordId;
     @api objectApiName;
 
@@ -28,7 +28,7 @@ export default class RegistrationPage extends LightningElement {
         this.dispatchEvent(evt);
     }
 
-    contactLogin(event) {
+    oncontactLogin(event) {
         const contactEvent = new CustomEvent('contactlogin', {
             detail: event.detail
         });

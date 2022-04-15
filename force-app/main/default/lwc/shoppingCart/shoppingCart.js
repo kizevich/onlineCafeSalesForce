@@ -30,27 +30,34 @@ export default class ShoppingCart extends LightningElement {
                     this.cart = undefined;
                     this.updateError = error;
                 })
+            
         }
 
+        if(!this.productSetsToSave) return;
         
-
         this.productSets.forEach(element => {
             let productSet = {Product__c: element.Product__c.Id, Count__c: element.Count__c, Cart__c: element.Cart__c.Id };
             this.productSetsToSave.push(productSet);
         });
-
-        if(this.productSetsToSave){
-            saveProductSets({ productSets: this.productSetsToSave})
-                .then((result) => {
-                    this.productSetsToSave = result;
-                    this.saveError = undefined;
-                    this.success = true;
-                })
-                .catch((error) => {
-                    this.productSetsToSave = undefined;
-                    this.saveError = error;
-                    this.success = false;
-                });
+        console.log(this.productSets[0]);
+        saveProductSets({ productSets: this.productSetsToSave})
+            .then((result) => {
+                this.productSetsToSave = result;
+                this.saveError = undefined;
+                this.success = true;
+            })
+            .catch((error) => {
+                this.productSetsToSave = undefined;
+                this.saveError = error;
+                this.success = false;
+            });
+        console.log(this.success);
+        console.log(this.saveError);
+        if (this.success) {
+            const cartEvent = new CustomEvent('cartsaved', {
+                detail: this.cart
+            });
+            this.dispatchEvent(cartEvent);
         }
     }
 
