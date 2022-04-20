@@ -11,7 +11,7 @@ export default class MainPage extends LightningElement {
     @track productSets = [];
     @track cart;
     @track totalPrice;
-    @track clientId = '0035j00000KEMZTAA5';
+    @track clientId = '';
     @track mode = 'light';
     @track components = {
         menu: true,

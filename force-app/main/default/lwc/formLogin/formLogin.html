@@ -1,0 +1,17 @@
+<template>
+    <template if:true={isActive}>
+        <lightning-card title="Login">
+            <div class="login-form">
+                <lightning-input label="Login" onchange={handleLoginChange}></lightning-input>
+                <lightning-input label="Password" onchange={handlePasswordChange}></lightning-input>
+                <div class="login-form-buttons">
+                    <lightning-button label="Login" onclick={onLogin}></lightning-button>
+                </div>
+                <div class="login-form-switcher">
+                    <div class="login-form-switcher-text"></div>
+                    <lightning-button label="Sign Up" onclick={onChangeTypeLog}></lightning-button>
+                </div>
+            </div>
+        </lightning-card>
+    </template>
+</template>

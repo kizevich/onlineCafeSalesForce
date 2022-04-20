@@ -1,18 +1,11 @@
-import { LightningElement, track, wire } from 'lwc';
+import { LightningElement, track, api } from 'lwc';
 import createContact from '@salesforce/apex/ContactService.createContact';
 import getContact from '@salesforce/apex/ContactService.getContact';
 import { ShowToastEvent} from 'lightning/platformShowToastEvent';
 
 export default class RegistrationForm extends LightningElement {
 
-    REGISTRATION = 'Registration';
-    LOG_IN = 'Log In';
-    REGISTER = 'Register';
-    @track titleValue = 'Registration';
-    @track titleButtonValue = 'Log In';
-    @track logButtonValue = 'Register';
-    @track adviceText = 'Already have an Account?';
-    @track isRegistration = true;
+    @api isActive = false;
     @track loginError;
     @track success;
     @track message;
@@ -32,22 +25,6 @@ export default class RegistrationForm extends LightningElement {
 
     handlePasswordChange(event) {
         this.contactRecord.Password__c = event.target.value;
-    }
-
-    onChangeTypeLog() {
-        if(this.titleValue === this.REGISTRATION) {
-            this.titleValue = this.LOG_IN;
-            this.titleButtonValue = this.REGISTRATION;
-            this.logButtonValue = this.LOG_IN;
-            this.adviceText = 'Dont have an Account yet?';
-            this.isRegistration = false;
-        } else if(this.titleValue === this.LOG_IN) {
-            this.isRegistration = true;
-            this.titleValue = this.REGISTRATION;
-            this.titleButtonValue = this.LOG_IN;
-            this.logButtonValue = this.REGISTER;
-            this.adviceText = 'Already have an Account?';
-        }
     }
 
     onRegistration() {
@@ -96,8 +73,12 @@ export default class RegistrationForm extends LightningElement {
                     console.log("error", JSON.stringify(this.error));
                 });
             if(contact.Password__c !== this.contactRecord.Password__c) alert('Wrong login or password');
-
         } 
-        
+    }
+
+    onChangeTypeLog() {
+        this.dispatchEvent(new CustomEvent('changetypelog', {
+            detail : 'login'
+        }))
     }
 }

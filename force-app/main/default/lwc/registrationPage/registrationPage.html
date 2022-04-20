@@ -3,8 +3,15 @@
         <div class="page">
             <div class="page-form">
                 <c-registration-form
-                    oncontactlogin={oncontactLogin}>
+                    oncontactlogin={oncontactLogin}
+                    onchangetypelog={onchangeTypeLog}
+                    is-active={components.registration}>
                 </c-registration-form>
+                <c-form-login
+                    onlogin={oncontactLogin}
+                    onchangetypelog={onchangeTypeLog}
+                    is-active={components.login}>
+                </c-form-login>
             </div>
         </div>
     </template>

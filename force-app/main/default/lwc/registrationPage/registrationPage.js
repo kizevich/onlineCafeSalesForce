@@ -1,4 +1,4 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 import NAME_FIELD from '@salesforce/schema/Contact.Name';
 import PASSWORD from '@salesforce/schema/Contact.Password__c';
 
@@ -8,6 +8,10 @@ export default class RegistrationPage extends LightningElement {
     @api isActive;
     @api recordId;
     @api objectApiName;
+    @track components = {
+        login : true,
+        registration : false
+    }
 
     constructor() {
         super();
@@ -28,10 +32,24 @@ export default class RegistrationPage extends LightningElement {
         this.dispatchEvent(evt);
     }
 
+    onchangeTypeLog(event) {
+        this.changeVisibleComponent(event.detail);
+    }
+
+    changeVisibleComponent(componentName) {
+        Object.keys(this.components).forEach(key => {
+            if (key === componentName) {
+                this.components[key] = true;
+            } else {
+                this.components[key] = false;
+            }
+        });
+    }
+
     oncontactLogin(event) {
         const contactEvent = new CustomEvent('contactlogin', {
             detail: event.detail
         });
-        this.dispatchEvent(event);
+        this.dispatchEvent(contactEvent);
     }
 }

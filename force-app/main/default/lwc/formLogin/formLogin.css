@@ -1,0 +1,32 @@
+.login-form { 
+    margin: 10px;
+    color: var(--main-color-text);
+}
+
+.login-form-buttons {
+    margin-top: 10px;
+}
+
+.login-form-switcher {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;   
+}
+
+.login-form-switcher-text {
+    margin: 5px;
+}
+
+:host {
+    --slds-c-card-radius-border: 10px;
+    --sds-c-card-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    --slds-c-card-color-border: transparent;
+    --slds-c-card-color-background: var(--product-card-background);
+    --slds-c-input-color-background: var(--navigation-bar-button);
+    --slds-c-card-text-color: var(--main-color-text);
+    --slds-c-input-color-border: transparent;
+    --sds-c-button-neutral-color-border: transparent;
+    --sds-c-button-neutral-color-background: var(--button-color-background);
+    --slds-c-button-text-color: var(--main-color-text);
+    --slds-c-input-text-color: var(--main-background);
+}

@@ -1,18 +1,18 @@
 <template>
-    <lightning-card title={titleValue}>
-        <div class="registration-form">
-            <template if:true={isRegistration}>
+    <template if:true={isActive}>
+        <lightning-card title="Registration">
+            <div class="registration-form">
                 <lightning-input label="Name" onchange={handleNameChange}></lightning-input>
-            </template>
-            <lightning-input label="Login" onchange={handleLoginChange}></lightning-input>
-            <lightning-input label="Password" onchange={handlePasswordChange}></lightning-input>
-            <div class="registration-form-buttons">
-                <lightning-button label={logButtonValue} onclick={onRegistration}></lightning-button>
+                <lightning-input label="Login" onchange={handleLoginChange}></lightning-input>
+                <lightning-input label="Password" onchange={handlePasswordChange}></lightning-input>
+                <div class="registration-form-buttons">
+                    <lightning-button label="Register" onclick={onRegistration}></lightning-button>
+                </div>
+                <div class="registration-form-switcher">
+                    <div class="registration-form-switcher-text"></div>
+                    <lightning-button label="Log In" onclick={onChangeTypeLog}></lightning-button>
+                </div>
             </div>
-            <div class="registration-form-switcher">
-                <div class="registration-form-switcher-text">{edviceText}</div>
-                <lightning-button label={titleButtonValue} onclick={onChangeTypeLog}></lightning-button>
-            </div>
-        </div>
-    </lightning-card>
+        </lightning-card>
+    </template>
 </template>
